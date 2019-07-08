@@ -1,16 +1,16 @@
 {
-  "name": "react-native-swipe-list-view",
-  "version": "1.5.8",
+  "name": "@nvthai/react-native-swipe-list-view",
+  "version": "1.5.10",
   "main": "lib/index.js",
   "author": "Jesse Sessler <jesse.sessler@gmail.com>",
-  "description": "A ListView with rows that swipe open and closed.",
+  "description": "A ListView with rows that swipe open and closed. Forked from https://github.com/jemise111/react-native-swipe-list-view",
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh",
     "dev": "node bin/dev.js && cd SwipeListExample && npm run start"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jemise111/react-native-swipe-list-view"
+    "url": "https://github.com/nvthai/react-native-swipe-list-view"
   },
   "types": "./types/index.d.ts",
   "license": "MIT",
@@ -32,5 +32,9 @@
   "devDependencies": {
     "@types/react": "^16.8.20",
     "@types/react-native": "^0.57.63"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
