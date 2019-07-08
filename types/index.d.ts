@@ -1,6 +1,17 @@
 import { Component } from 'react';
 import { StyleProp, ViewStyle, Animated, LayoutChangeEvent, GestureResponderEvent, PanResponderGestureState, ListView, NativeSyntheticEvent, NativeScrollEvent, ListRenderItemInfo, ListViewDataSource, SectionListProps, FlatListProps } from 'react-native';
 
+interface ISwipeData {
+    key: string;
+    value: number;
+    isOpen: boolean;
+    direction: 'left' | 'right';
+}
+
+interface ISwipeRowRef {
+    closeRow: () => void;
+}
+  
 interface IPropsSwipeRow<T> {
 	/**
 	 * Used by the SwipeListView to close rows on scroll events.
