@@ -324,6 +324,7 @@ class SwipeRow extends Component {
 		// reset everything
 		this.swipeInitialX = null;
 		this.horizontalSwipeGestureBegan = false;
+		this.props.swipeGestureEnd && this.props.swipeGestureEnd();
 	}
 
 	renderVisibleContent() {
@@ -437,6 +438,10 @@ SwipeRow.propTypes = {
 	 * Called when it has been detected that a row should be swiped open.
 	 */
 	swipeGestureBegan: PropTypes.func,
+	/**
+	 * Called when it has been detected that the swipe gesture is end (finger removed/PanResponder released).
+	 */
+	swipeGestureEnd: PropTypes.func,
 	/**
 	 * Called when a swipe row is animating open. Used by the SwipeListView
 	 * to keep references to open rows.
