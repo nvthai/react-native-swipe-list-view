@@ -23,6 +23,10 @@ interface IPropsSwipeRow<T> {
 	 */
 	swipeGestureBegan(): void;
 	/**
+	 * Called when it has been detected that the swipe gesture is end (finger removed/PanResponder released).
+	 */
+	swipeGestureEnd(): void;
+	/**
 	 * Called when a swipe row is animating open. Used by the SwipeListView
 	 * to keep references to open rows.
 	 */
@@ -171,7 +175,7 @@ interface IPropsSwipeListView<T> {
 	 * How to render a hidden row in a FlatList (renders behind the row). Should return a valid React Element.
 	 * This is required unless renderItem is passing a SwipeRow.
 	 */
-	renderHiddenItem(rowData: ListRenderItemInfo<T>, rowMap: RowMap<T>): JSX.Element;
+	renderHiddenItem(rowData: ListRenderItemInfo<T>, rowMap: RowMap<T>): JSX.Element | undefined;
 	/**
 	 * [DEPRECATED] How to render a row in a ListView. Should return a valid React Element.
 	 */
@@ -242,6 +246,10 @@ interface IPropsSwipeListView<T> {
 	 * Called when a swipe row is animating swipe
 	 */
 	swipeGestureBegan(rowKey: string): void;
+	/**
+	 * Called when a swipe row gesture is end
+	 */
+	swipeGestureEnd(rowKey: string): void;
 	/**
 	 * Called when a swipe row is animating open
 	 */
