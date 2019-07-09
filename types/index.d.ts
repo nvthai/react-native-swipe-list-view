@@ -128,6 +128,11 @@ interface IPropsSwipeRow<T> {
 	 */
 	swipeToClosePercent: number;
 	/**
+	* What % of the left/right swipeValue does the user need to swipe
+	* past to trigger the row opening.
+	*/
+	swipeToPerformActionPercent: number;
+	/**
 	 * callback to determine whether component should update (currentItem, newItem)
 	 */
 	shouldItemUpdate(currentItem: T, newItem: T): void;

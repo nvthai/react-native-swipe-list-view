@@ -153,7 +153,8 @@ class SwipeListView extends Component {
 					onRowPress: _ => this.onRowPress(),
 					setScrollEnabled: enable => this.setScrollEnabled(enable),
 					swipeGestureBegan: _ => this.rowSwipeGestureBegan(key),
-					swipeGestureEnd: _ => this.rowSwipeGestureEnd(key)
+					swipeGestureEnd: _ => this.rowSwipeGestureEnd(key),
+					onSwipeValueChange: this.props.onSwipeValueChange ? data => this.props.onSwipeValueChange({ ...data, key }) : null
 				}
 			);
 		} else {

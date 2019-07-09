@@ -19,6 +19,7 @@ const DEFAULT_PREVIEW_OPEN_DELAY = 700;
 const PREVIEW_CLOSE_DELAY = 300;
 const MAX_VELOCITY_CONTRIBUTION = 5;
 const SCROLL_LOCK_MILLISECONDS = 300;
+const SCREEN_WIDTH = Dimensions.get('window').width;
 
 /**
  * Row that is generally used in a SwipeListView.
@@ -67,7 +68,7 @@ class SwipeRow extends Component {
 
 		if (this.props.forceCloseToRightThreshold && this.props.forceCloseToRightThreshold > 0) {
 			this._translateX.addListener(({ value }) => {
-				if(!this.isForceClosing && (Dimensions.get('window').width + value) < this.props.forceCloseToRightThreshold) {
+				if(!this.isForceClosing && (SCREEN_WIDTH + value) < this.props.forceCloseToRightThreshold) {
 					this.isForceClosing = true;
 					this.forceCloseRow("right");
 					if(this.props.onForceCloseToRight) {
@@ -77,9 +78,9 @@ class SwipeRow extends Component {
 			});
 		}
 
-		if (this.props.forceCloseToLeftThreshold && this.props.forceCloseToRightThreshold > 0) {
+		if (this.props.forceCloseToLeftThreshold && this.props.forceCloseToLeftThreshold > 0) {
 			this._translateX.addListener(({ value }) => {
-				if(!this.isForceClosing && (Dimensions.get('window').width - value) < this.props.forceCloseToLeftThreshold) {
+				if(!this.isForceClosing && (SCREEN_WIDTH - value) < this.props.forceCloseToLeftThreshold) {
 					this.isForceClosing = true;
 					this.forceCloseRow("left");
 					if(this.props.onForceCloseToLeft) {
@@ -247,6 +248,9 @@ class SwipeRow extends Component {
 					// we're more than halfway
 					toValue = this.props.rightOpenValue;
 				}
+				if (this.props.swipeToPerformActionPercent && (this._translateX._value - projectedExtraPixels) < -SCREEN_WIDTH * (this.props.swipeToPerformActionPercent/100)) {
+					toValue = -SCREEN_WIDTH;
+				}
 			} else {
 				if ((this._translateX._value - projectedExtraPixels) < this.props.rightOpenValue * (1 - (this.props.swipeToClosePercent/100))) {
 					toValue = this.props.rightOpenValue;
@@ -254,6 +258,7 @@ class SwipeRow extends Component {
 			}
 		}
 
+		this.props.swipeGestureEnd && this.props.swipeGestureEnd();
 		this.manuallySwipeRow(toValue);
 	}
 
@@ -302,6 +307,7 @@ class SwipeRow extends Component {
 				useNativeDriver: this.props.useNativeDriver,
 			}
 		).start( _ => {
+			this._translateX.setValue(toValue)
 			this.ensureScrollEnabled()
 			if (toValue === 0) {
 				this.isOpen = false;
@@ -324,7 +330,6 @@ class SwipeRow extends Component {
 		// reset everything
 		this.swipeInitialX = null;
 		this.horizontalSwipeGestureBegan = false;
-		this.props.swipeGestureEnd && this.props.swipeGestureEnd();
 	}
 
 	renderVisibleContent() {
@@ -541,6 +546,11 @@ SwipeRow.propTypes = {
 	 */
 	swipeToClosePercent: PropTypes.number,
 	/**
+	* What % of the left/right swipeValue does the user need to swipe
+	* past to trigger the row opening.
+	*/
+	swipeToPerformActionPercent: PropTypes.number,
+	/**
 	 * callback to determine whether component should update (currentItem, newItem)
 	 */
 	shouldItemUpdate: PropTypes.func,
@@ -593,6 +603,7 @@ SwipeRow.defaultProps = {
 	swipeToOpenPercent: 50,
 	swipeToOpenVelocityContribution: 0,
 	swipeToClosePercent: 50,
+	swipeToPerformActionPercent: 50,
 	item: {},
 	useNativeDriver: true,
 };
