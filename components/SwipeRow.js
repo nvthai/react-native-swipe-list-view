@@ -236,6 +236,9 @@ class SwipeRow extends Component {
 					// we're more than halfway
 					toValue = this.props.leftOpenValue;
 				}
+				if (this.props.swipeToPerformActionPercent && (this._translateX._value - projectedExtraPixels) > SCREEN_WIDTH * (this.props.swipeToPerformActionPercent/100)) {
+					toValue = SCREEN_WIDTH;
+				}
 			} else {
 				if ((this._translateX._value - projectedExtraPixels) > this.props.leftOpenValue * (1 - (this.props.swipeToClosePercent/100))) {
 					toValue = this.props.leftOpenValue;

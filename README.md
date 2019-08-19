@@ -17,13 +17,13 @@ Try it out! https://snack.expo.io/@jemise111/react-native-swipe-list-view
 
 ## Installation
 ```bash
-npm install --save react-native-swipe-list-view
+npm install --save @nvthai/react-native-swipe-list-view
 ```
 
 ## Running the example
 The application under ./SwipeListExample will produce the above example. To run execute the following:
 
-* ```git clone https://github.com/jemise111/react-native-swipe-list-view.git```
+* ```git clone https://github.com/nvthai/react-native-swipe-list-view.git```
 * ```cd react-native-swipe-list-view```
 * ```cd SwipeListExample```
 * ```yarn```
@@ -83,22 +83,22 @@ renderItem={ data => (
 ```
 
 ## Component APIs
-[`<SwipeListView />`](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/SwipeListView.md)
+[`<SwipeListView />`](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/SwipeListView.md)
 
-[`<SwipeRow />`](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/SwipeRow.md)
+[`<SwipeRow />`](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/SwipeRow.md)
 
 ## Flatlist / SectionList support
 `SwipeListView` now supports `FlatList` and `SectionList`! (as of v1.0.0)
 
-Please see the [migrating-to-flatlist doc](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/migrating-to-flatlist.md) for all details.
+Please see the [migrating-to-flatlist doc](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/migrating-to-flatlist.md) for all details.
 And see `example.js` for a full usage example.
 
 You can continue to use the (deprecated) `ListView` component, however there are some BREAKING CHANGES that are explained in that doc as well
 
 ## Other Useful Guides
- * [Per Row Behavior](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/per-row-behavior.md) (Define different swipe values, stop values, etc for each individual row)
- * [UI Based On Swipe Values](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/ui-based-on-swipe-values.md) (aka the gmail effect - animate components in rows based on current swipe position)
- * [Swipe To Delete](https://github.com/jemise111/react-native-swipe-list-view/blob/master/docs/swipe-to-delete.md) (Swiping a row all the way across causes a delete animation)
+ * [Per Row Behavior](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/per-row-behavior.md) (Define different swipe values, stop values, etc for each individual row)
+ * [UI Based On Swipe Values](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/ui-based-on-swipe-values.md) (aka the gmail effect - animate components in rows based on current swipe position)
+ * [Swipe To Delete](https://github.com/nvthai/react-native-swipe-list-view/blob/master/docs/swipe-to-delete.md) (Swiping a row all the way across causes a delete animation)
 
 ## Core Support
 RN Core added a SwipeList component as of [v0.27.0](https://github.com/facebook/react-native/releases/tag/v0.27.0)
