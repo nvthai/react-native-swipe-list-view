@@ -1,6 +1,6 @@
 {
   "name": "@nvthai/react-native-swipe-list-view",
-  "version": "1.5.15",
+  "version": "1.5.16",
   "main": "lib/index.js",
   "author": "Van-Thai Nguyen <nvthai.fr@gmail.com>",
   "description": "A ListView with rows that swipe open and closed. Forked from https://github.com/jemise111/react-native-swipe-list-view",
