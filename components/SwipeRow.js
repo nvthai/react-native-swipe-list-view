@@ -191,7 +191,8 @@ class SwipeRow extends Component {
 			}
 			if (!this.horizontalSwipeGestureBegan) {
 				this.horizontalSwipeGestureBegan = true;
-				this.props.swipeGestureBegan && this.props.swipeGestureBegan();
+				const direction = dx > 0 ? 'TO_RIGHT' : 'TO_LEFT';
+				this.props.swipeGestureBegan && this.props.swipeGestureBegan(direction);
 			}
 
 			let newDX = this.swipeInitialX + dx;
