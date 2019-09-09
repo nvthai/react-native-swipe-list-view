@@ -250,7 +250,7 @@ interface IPropsSwipeListView<T> {
 	/**
 	 * Called when a swipe row is animating swipe
 	 */
-	swipeGestureBegan(rowKey: string): void;
+	swipeGestureBegan(rowKey: string, direction: string): void;
 	/**
 	 * Called when a swipe row gesture is end
 	 */
